@@ -1,17 +1,21 @@
+import { Roboto_400Regular, Roboto_700Bold, useFonts } from '@expo-google-fonts/roboto';
+import { NativeBaseProvider, StatusBar } from 'native-base';
 import React from 'react';
-import { NativeBaseProvider,StatusBar} from 'native-base';
 import { StyleSheet, Text, View } from 'react-native';
+import { Loading } from './src/components/loading';
+import Routes from './src/routes';
+import { Home } from './src/screens/Home';
+import { Register } from './src/screens/Register';
 import { SignIn } from './src/screens/SignIn';
 import { THEME } from './src/styles/theme';
-import {useFonts, Roboto_400Regular,Roboto_700Bold} from '@expo-google-fonts/roboto';
-import { Loading } from './src/components/loading';
 export default function App() {
   const [fontsLoaded] = useFonts({Roboto_400Regular, Roboto_700Bold});
   return (
 
     <NativeBaseProvider theme={THEME}>
       <StatusBar barStyle="light-content" backgroundColor="transparent" translucent/>
-      {fontsLoaded ? <SignIn/> : <Loading/>}
+      {fontsLoaded ? <Routes/> : <Loading/>}
+      
     </NativeBaseProvider>
   );
 }
